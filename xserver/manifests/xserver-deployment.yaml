@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: xserverapp
+  name: xserver-rc
   labels:
     heritage: helm
 spec:
