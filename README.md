@@ -1,2 +1,4 @@
 # charts
-Kubernetes MSaaS Charts
+Kubernetes MSaaS Helm Charts
+
+See also: https://github.com/helm/charts
