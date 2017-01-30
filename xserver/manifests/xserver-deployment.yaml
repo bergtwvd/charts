@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: xserverapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: xserverapp
+    spec:
+      containers:
+      - name: xserver
+        image: app-docker136.hex.tno.nl:443/library/xserver
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: http
+
