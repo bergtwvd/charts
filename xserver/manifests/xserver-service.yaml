@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: xserver-app
+  name: xserverapp
   labels:
     app: example-nginx
     heritage: helm

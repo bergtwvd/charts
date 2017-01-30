@@ -5,11 +5,11 @@ metadata:
 spec:
   replicas: 1
   selector:
-    app: xserver-app
+    app: xserverapp
   template:
     metadata:
       labels:
-        app: xserver-app
+        app: xserverapp
     spec:
       containers:
       - name: xserver
