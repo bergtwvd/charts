@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: xserverapp
+  labels:
+  app: example-nginx
+  heritage: helm
 spec:
   selector:
     app: xserverapp
@@ -12,5 +15,8 @@ spec:
     targetPort: 8080
     nodePort: 30000
     protocol: TCP
-
+  - name: x11
+    port: 6000
+    targetPort: 6000
+    protocol: TCP
  
