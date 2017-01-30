@@ -19,8 +19,6 @@ spec:
         - containerPort: 6000
           protocol: TCP
           name: x11
-      imagePullSecrets:
-      - name: registrypullsecret
 ---
 apiVersion: v1
 kind: Service
