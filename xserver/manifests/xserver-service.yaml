@@ -1,13 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: xserverapp
-  labels:
-    app: example-nginx
-    heritage: helm
+  name: xserver-sv
 spec:
   selector:
-    app: xserverapp
+    app: xserver-app
   type: NodePort
   ports:
   - name: http
