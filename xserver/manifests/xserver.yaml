@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: xserverapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: xserverapp
+    spec:
+      containers:
+      - name: xserver
+        image: app-docker136.hex.tno.nl:443/library/xserver
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: http
+        - containerPort: 6000
+          protocol: TCP
+          name: x11
+      imagePullSecrets:
+      - name: registrypullsecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: xserverapp
+spec:
+  selector:
+    app: xserverapp
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    nodePort: 30000
+    protocol: TCP
+  - name: x11
+    port: 6000
+    targetPort: 6000
+    protocol: TCP
+ 
