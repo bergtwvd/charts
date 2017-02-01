@@ -16,7 +16,7 @@ spec:
       containers:
       - name: start
         image: app-docker136.hex.tno.nl:443/msaas-nld/start:po
-        command: [ "/root/lrc/launch.sh", "-f start -d allfoms" ]
+        command: [ "/root/lrc/launch.sh", "-f start -d allfoms -p 8990" ]
         env:
         - name: DISPLAY
           value: xserver-sv.default.svc.cluster.local:0
@@ -24,14 +24,18 @@ spec:
         image: app-docker136.hex.tno.nl:443/msaas-aus/shipsim:po
         command: [ "/root/lrc/launch.sh", "-f Shipsim" ]
         env:
-        - name: MINSLEEP
-          value: "15"
+        - name: LRC_MASTERHOST
+          value: "127.0.0.1"
+        - name: LRC_MASTERPORT
+          value: "8990"
       - name: kml
         image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:po
         command: [ "/root/lrc/launch.sh", "-f KMLServer -iconurl http://app-docker11.hex.tno.nl:30001" ]
         env:
-        - name: MINSLEEP
-          value: "10"
+        - name: LRC_MASTERHOST
+          value: "127.0.0.1"
+        - name: LRC_MASTERPORT
+          value: "8990"
         ports:
         - containerPort: 8080
           protocol: TCP
