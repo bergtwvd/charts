@@ -1,0 +1,9 @@
+name: shisim
+home: https://github.com/globalsim/msaas-A/
+version: 0.1
+description: Shipsim.
+maintainers:
+  - MSaaS <me.com>
+details:
+  Simulates a single ship.
+  

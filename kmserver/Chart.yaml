@@ -1,0 +1,9 @@
+name: kmlserver
+home: https://github.com/globalsim/msaas-A/
+version: 0.1
+description: KML Server.
+maintainers:
+  - MSaaS <me.com>
+details:
+  Provides a KML service.
+  
