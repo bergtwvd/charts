@@ -1,0 +1,9 @@
+name: vesselsim
+home: https://github.com/globalsim/msaas-A/
+version: 0.1
+description: Vesselsim.
+maintainers:
+  - MSaaS <me.com>
+details:
+  This is a simple vessel simulation.
+  

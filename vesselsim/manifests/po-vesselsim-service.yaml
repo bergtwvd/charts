@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vesselsim-sv
+  labels:
+    heritage: helm
+spec:
+  selector:
+    app: vesselsim-app
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    nodePort: 30001
+    protocol: TCP
