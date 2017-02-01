@@ -16,6 +16,7 @@ spec:
       containers:
       - name: start
         image: app-docker136.hex.tno.nl:443/msaas-nld/start:po
+        command: [ "/root/lrc/launch.sh", "-f start -d allfoms" ]
         env:
         - name: DISPLAY
           value: xserver-sv.default.svc.cluster.local:0
