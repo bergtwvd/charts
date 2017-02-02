@@ -20,6 +20,8 @@ spec:
         env:
         - name: DISPLAY
           value: xserver-sv.default.svc.cluster.local:0
+        - name: PORTICO_UNIQUEFEDERATENAMES
+          value: "false"
       - name: kml
         image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:po
         command: [ "/root/lrc/launch.sh", "-f KMLServer -iconurl http://app-docker11.hex.tno.nl:30001" ]
@@ -28,6 +30,8 @@ spec:
           value: "127.0.0.1"
         - name: LRC_MASTERPORT
           value: "8990"
+        - name: PORTICO_UNIQUEFEDERATENAMES
+          value: "false"
         ports:
         - containerPort: 8080
           protocol: TCP
