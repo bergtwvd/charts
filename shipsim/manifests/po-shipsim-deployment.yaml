@@ -20,3 +20,4 @@ spec:
         env:
         - name: PORTICO_UNIQUEFEDERATENAMES
           value: "false"
+        imagePullPolicy: Always
