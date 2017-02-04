@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: damageserver-rc
+  labels:
+    heritage: helm
+spec:
+  replicas: 1
+  selector:
+    app: damageserver-app
+  template:
+    metadata:
+      labels:
+        app: damageserver-app
+    spec:
+      containers:
+      - name: kml
+        image: app-docker136.hex.tno.nl:443/msaas-nld/damageserver:po
+        command: [ "/root/lrc/launch.sh", "-f DamageServer" ]
+        env:
+        - name: PORTICO_UNIQUEFEDERATENAMES
+          value: "false"

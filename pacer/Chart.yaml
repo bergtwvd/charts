@@ -1,0 +1,9 @@
+name: pacer
+home: https://github.com/globalsim/msaas-A/
+version: 0.1
+description: Pacer.
+maintainers:
+  - MSaaS <me.com>
+details:
+  Provides a Pacer service.
+  
