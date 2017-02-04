@@ -14,7 +14,7 @@ spec:
         app: damageserver-app
     spec:
       containers:
-      - name: kml
+      - name: damageserver
         image: app-docker136.hex.tno.nl:443/msaas-nld/damageserver:po
         command: [ "/root/lrc/launch.sh", "-f DamageServer" ]
         env:

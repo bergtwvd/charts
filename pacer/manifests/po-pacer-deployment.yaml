@@ -19,7 +19,7 @@ spec:
         command: [ "/root/lrc/launch.sh", "-f Pacer" ]
         env:
         - name: ADVERTISED_ADDRESS
-          value: "app-docker11.hex.tno.nl:30010"
+          value: "app-docker13.hex.tno.nl:443"
         - name: PORTICO_UNIQUEFEDERATENAMES
           value: "false"
         ports:
