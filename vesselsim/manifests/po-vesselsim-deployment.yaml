@@ -34,7 +34,7 @@ spec:
         imagePullPolicy: Always
       - name: kml
         image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:po
-        command: [ "/root/lrc/launch.sh", "-f KMLServer -iconurl http://app-docker11.hex.tno.nl:30001" ]
+        command: [ "/root/lrc/launch.sh", "-f KMLServer -k 8081 -i http://app-docker11.hex.tno.nl:30001" ]
         env:
         - name: LRC_MASTERHOST
           value: "127.0.0.1"
@@ -58,7 +58,7 @@ spec:
         - name: PORTICO_UNIQUEFEDERATENAMES
           value: "false"
         ports:
-        - containerPort: 8082
+        - containerPort: 8080
           protocol: TCP
           name: pacer
         imagePullPolicy: Always
@@ -68,4 +68,4 @@ spec:
         env:
         - name: PORTICO_UNIQUEFEDERATENAMES
           value: "false"
-        imagePullPolicy: Always 
+        imagePullPolicy: Always

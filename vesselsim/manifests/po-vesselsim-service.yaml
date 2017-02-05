@@ -14,6 +14,6 @@ spec:
     nodePort: 30001
     protocol: TCP
   - name: pacer
-    port: 8082
+    port: 8080
     nodePort: 30002
     protocol: TCP
