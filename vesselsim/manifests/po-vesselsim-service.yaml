@@ -9,8 +9,11 @@ spec:
     app: vesselsim-app
   type: NodePort
   ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
+  - name: kml
+    targetPort: kml
     nodePort: 30001
+    protocol: TCP
+  - name: pacer
+    targetPort: pacer
+    nodePort: 30002
     protocol: TCP

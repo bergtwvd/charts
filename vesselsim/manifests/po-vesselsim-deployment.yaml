@@ -41,9 +41,9 @@ spec:
         - name: LRC_MASTERPORT
           value: "8990"
         ports:
-        - containerPort: 8080
+        - containerPort: 8081
           protocol: TCP
-          name: http
+          name: kml
         imagePullPolicy: Always
       - name: pacer
         image: app-docker136.hex.tno.nl:443/msaas-nld/pacer:po
@@ -58,9 +58,9 @@ spec:
         - name: PORTICO_UNIQUEFEDERATENAMES
           value: "false"
         ports:
-        - containerPort: 8080
+        - containerPort: 8082
           protocol: TCP
-          name: http
+          name: pacer
         imagePullPolicy: Always
       - name: damageserver
         image: app-docker136.hex.tno.nl:443/msaas-nld/damageserver:po
