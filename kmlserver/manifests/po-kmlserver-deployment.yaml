@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: Always
       - name: kml
         image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:po
-        command: [ "/root/lrc/launch.sh", "-f KMLServer -iconurl http://app-docker13.hex.tno.nl:443/kmlserver/entities" ]
+        command: [ "/root/lrc/launch.sh", "-f KMLServer -c pitch-logicaltime.config -iconurl http://app-docker13.hex.tno.nl:443/kmlserver/entities" ]
         env:
         - name: LRC_MASTERHOST
           value: "127.0.0.1"

@@ -20,6 +20,7 @@ spec:
         env:
         - name: DISPLAY
           value: xserver-sv.default.svc.cluster.local:0
+        imagePullPolicy: Always
       - name: shipsim
         image: app-docker136.hex.tno.nl:443/msaas-aus/shipsim:po
         command: [ "/root/lrc/launch.sh", "-f Shipsim" ]
@@ -30,6 +31,7 @@ spec:
           value: "8990"
         - name: MINSLEEP
           value: "10"
+        imagePullPolicy: Always
       - name: kml
         image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:po
         command: [ "/root/lrc/launch.sh", "-f KMLServer -iconurl http://app-docker11.hex.tno.nl:30001" ]
@@ -42,3 +44,28 @@ spec:
         - containerPort: 8080
           protocol: TCP
           name: http
+        imagePullPolicy: Always
+      - name: pacer
+        image: app-docker136.hex.tno.nl:443/msaas-nld/pacer:po
+        command: [ "/root/lrc/launch.sh", "-f Pacer" ]
+        env:
+        - name: LRC_MASTERHOST
+          value: "127.0.0.1"
+        - name: LRC_MASTERPORT
+          value: "8990"
+        - name: ADVERTISED_ADDRESS
+          value: "app-docker13.hex.tno.nl:443"
+        - name: PORTICO_UNIQUEFEDERATENAMES
+          value: "false"
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: http
+        imagePullPolicy: Always
+      - name: damageserver
+        image: app-docker136.hex.tno.nl:443/msaas-nld/damageserver:po
+        command: [ "/root/lrc/launch.sh", "-f DamageServer" ]
+        env:
+        - name: PORTICO_UNIQUEFEDERATENAMES
+          value: "false"
+        imagePullPolicy: Always
