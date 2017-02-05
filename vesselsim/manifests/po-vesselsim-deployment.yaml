@@ -61,5 +61,5 @@ spec:
         - containerPort: 8080
           protocol: TCP
           name: pacer
-        imagePullPolicy: Always
+        imagePullPolicy: Always 
 

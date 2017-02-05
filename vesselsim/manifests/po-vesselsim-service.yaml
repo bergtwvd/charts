@@ -10,10 +10,10 @@ spec:
   type: NodePort
   ports:
   - name: kml
-    port: 8081
+    port: kml
     nodePort: 30001
     protocol: TCP
   - name: pacer
-    port: 8080
+    port: pacer
     nodePort: 30002
     protocol: TCP
