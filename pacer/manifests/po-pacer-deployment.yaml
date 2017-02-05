@@ -26,4 +26,4 @@ spec:
         - containerPort: 8080
           protocol: TCP
           name: http
-        imagePullPolicy: Always
+        imagePullPolicy: Always 
