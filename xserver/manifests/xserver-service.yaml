@@ -17,5 +17,6 @@ spec:
   - name: x11
     port: 6000
     targetPort: 6000
+    nodePort: 31000
     protocol: TCP
  
