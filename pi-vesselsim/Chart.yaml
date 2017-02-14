@@ -1,9 +1,9 @@
-name: Portico KMLServer
+name: Pitch Vesselsim
 home: https://github.com/globalsim/msaas-A/
 version: 0.1
-description: KML Server.
+description: Vesselsim.
 maintainers:
   - MSaaS <me.com>
 details:
-  Provides a KML service.
+  This is a simple vessel simulation.
   

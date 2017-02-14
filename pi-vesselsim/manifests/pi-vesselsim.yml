@@ -1,0 +1,91 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: vesselsim-rc
+  labels:
+    heritage: helm
+spec:
+  replicas: 1
+  selector:
+    app: vesselsim-app
+  template:
+    metadata:
+      labels:
+        app: vesselsim-app
+    spec:
+      containers:
+      - name: start
+        image: app-docker136.hex.tno.nl:443/msaas-nld/start:pi
+        imagePullPolicy: Always
+        env:
+        - name: DISPLAY
+          value: xserver-sv.default.svc.cluster.local:0
+        - name: PITCH_CRCHOST
+          value: crc.default.svc.cluster.local
+      - name: shipsim
+        image: app-docker136.hex.tno.nl:443/msaas-aus/shipsim:pi
+        imagePullPolicy: Always
+        command: [ "/root/lrc/launch.sh", "-f Shipsim" ]
+        env:
+        - name: PITCH_CRCHOST
+          value: crc.default.svc.cluster.local
+      - name: kml
+        image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
+        imagePullPolicy: Always
+        command: [ "/root/lrc/launch.sh", "-f KMLServer -k 8081 -c pitch-logicaltime.config -iconurl http://app-docker13.hex.tno.nl:443/kmlserver" ]
+        env:
+        - name: PITCH_CRCHOST
+          value: crc.default.svc.cluster.local
+        - name: MINSLEEP
+          value: "10"
+        ports:
+        - containerPort: 8081
+          protocol: TCP
+          name: kmlport
+      - name: pacer
+        image: app-docker136.hex.tno.nl:443/msaas-nld/pacer:pi
+        command: [ "/root/lrc/launch.sh", "-f Pacer" ]
+        env:
+        - name: ADVERTISED_ADDRESS
+          value: "app-docker13.hex.tno.nl:443"
+        - name: PITCH_CRCHOST
+          value: crc.default.svc.cluster.local
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: pacerport
+        imagePullPolicy: Always 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kmlserver-sv
+  labels:
+    heritage: helm
+spec:
+  selector:
+    app: vesselsim-app
+  type: NodePort
+  ports:
+  - name: http
+    port: 8080
+    targetPort: kmlport
+    nodePort: 30001
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pacer-sv
+  labels:
+    heritage: helm
+spec:
+  selector:
+    app: vesselsim-app
+  type: NodePort
+  ports:
+  - name: http
+    port: 30002
+    targetPort: pacerport
+    nodePort: 30002
+    protocol: TCP
