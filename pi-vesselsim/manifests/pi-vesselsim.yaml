@@ -16,7 +16,7 @@ spec:
       containers:
       - name: start
         image: app-docker136.hex.tno.nl:443/msaas-nld/start:pi
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         env:
         - name: DISPLAY
           value: xserver-sv.default.svc.cluster.local:0
@@ -24,14 +24,14 @@ spec:
           value: crc.default.svc.cluster.local
       - name: shipsim
         image: app-docker136.hex.tno.nl:443/msaas-aus/shipsim:pi
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         command: [ "/root/lrc/launch.sh", "-f Shipsim" ]
         env:
         - name: PITCH_CRCHOST
           value: crc.default.svc.cluster.local
       - name: kml
         image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         command: [ "/root/lrc/launch.sh", "-f KMLServer -k 8081 -c pitch-logicaltime.config -iconurl http://app-docker13.hex.tno.nl:443/kmlserver" ]
         env:
         - name: PITCH_CRCHOST
@@ -44,6 +44,7 @@ spec:
           name: kmlport
       - name: pacer
         image: app-docker136.hex.tno.nl:443/msaas-nld/pacer:pi
+        imagePullPolicy: IfNotPresent
         command: [ "/root/lrc/launch.sh", "-f Pacer" ]
         env:
         - name: ADVERTISED_ADDRESS
@@ -54,7 +55,7 @@ spec:
         - containerPort: 8080
           protocol: TCP
           name: pacerport
-        imagePullPolicy: Always 
+        imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service
